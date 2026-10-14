@@ -1,0 +1,34 @@
+name: Rebuild published map
+on:
+  push:
+    branches:
+      - claude/gracious-ride-hxhf3w
+    paths:
+      - 'templates/**'
+      - 'scripts/build_map.py'
+      - '.github/workflows/build-published-map.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Build website HTML
+        run: python3 scripts/build_map.py
+      - name: Verify generated map theme
+        run: |
+          grep -q 'data-style-set="terracotta"' map/index.html
+          grep -q 'data-style-set="terracotta"' index.html
+      - name: Commit generated website
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html map/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish rebuilt Terracotta map"
+            git push
+          fi

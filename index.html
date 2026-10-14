@@ -319,6 +319,30 @@ td .fmt { margin-left: 6px; font: 11px var(--font-mono); color: var(--muted); }
 .sources { margin: 0; padding-left: 1.1em; display: grid; gap: 8px; font-size: 13px; color: var(--ink-2); }
 footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 14px; }
 footer a { color: inherit; }
+/* Terracotta — warm editorial map style */
+:root[data-style="terracotta"] {
+ --wine:#68283b; --terracotta:#b9654d; --clay:#d69a7e; --olive:#777c58; --sand:#e7d8bd; --cream:#f8f3e8;
+ --bg:#f8f3e8; --surface:#fffdf8; --field:#fffdf8; --ground:#eee5d7;
+ --ink:#68283b; --ink-2:#704e50; --muted:#796d68; --rule:#d9c6b4;
+ --line-vil:#bb998e; --line-admin:#68283b; --accent:#b9654d; --accent-ink:#fffdf8;
+ --tip-bg:#68283b; --tip-ink:#fffdf8; --tip-muted:#e7d8bd;
+ --d0-fill:#d69a7e; --d0-hot:#b9654d; --d1-fill:#e7d8bd; --d1-hot:#d8c5a7;
+ --d0-wash:.19; --d0-wash-hot:.32; --d1-wash:.07; --d1-wash-hot:.16;
+ --tile-filter:sepia(.22) saturate(.72) hue-rotate(335deg) brightness(1.04);
+ --neutral-fill:#d69a7e; --shadow:0 8px 24px #68283b22;
+ --hl:#b9654d; --on-hl:#fffdf8; --hl-text:#68283b;
+ --d0-wash-fill:#b9654d; --old-band:color-mix(in srgb,#b9654d 35%,transparent);
+ --pin-halo:#fffdf8; --r-sm:5px; --r-md:12px; --rule-strong:2px solid #68283b;
+ --font-display:"Instrument Serif","Noto Serif TC",Georgia,serif;
+ --font-body:"Instrument Sans","Noto Sans TC",Arial,sans-serif; color-scheme:light;
+}
+:root[data-style="terracotta"] .maplibregl-ctrl-group {background:#fffdf8;border:1px solid #e7d8bd;box-shadow:0 4px 16px #68283b16}
+:root[data-style="terracotta"] .maplibregl-popup-content {background:#fffdf8;color:#68283b;border:1px solid #e7d8bd;border-radius:10px;box-shadow:0 10px 30px #68283b20}
+:root[data-style="terracotta"] .maplibregl-ctrl-attrib {background:#fffdf8d9;color:#796d68}
+:root[data-style="terracotta"] button:focus-visible,:root[data-style="terracotta"] a:focus-visible {outline:2px solid #b9654d;outline-offset:3px}
+:root[data-style="terracotta"] ::selection {background:#e7d8bd;color:#68283b}
+@media(prefers-reduced-motion:reduce){:root[data-style="terracotta"] *,:root[data-style="terracotta"] *::before,:root[data-style="terracotta"] *::after{transition:none!important;animation:none!important}}
+
 </style>
 <script>
   try {
@@ -336,6 +360,7 @@ footer a { color: inherit; }
         <div class="theme-switch" role="group" aria-label="Style">
           <button type="button" data-style-set="deck" aria-pressed="false">Deck<span class="zh" lang="zh-Hant-TW">簡報</span></button>
           <button type="button" data-style-set="program" aria-pressed="false">Program<span class="zh" lang="zh-Hant-TW">議程</span></button>
+          <button type="button" data-style-set="terracotta" aria-pressed="false">Terracotta<span class="zh" lang="zh-Hant-TW">陶土</span></button>
         </div>
         <div class="theme-switch" role="group" aria-label="Colour theme">
           <button type="button" data-theme-set="light" aria-pressed="false">Light<span class="zh" lang="zh-Hant-TW">淺色</span></button>
